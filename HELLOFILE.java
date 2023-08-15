@@ -2,7 +2,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-public class HELLOFILE {
+public class HELLOFILE  {
     public static void main(String[] args) {
         FileReader fp;
         try {
