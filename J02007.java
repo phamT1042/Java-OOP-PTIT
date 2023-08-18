@@ -1,5 +1,5 @@
 import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.LinkedHashMap;
 
 public class J02007 {
     public static void main(String[] args) {
@@ -8,7 +8,7 @@ public class J02007 {
         int t = scan.nextInt();
         for (int i = 1; i <= t; i++) {
             int n = scan.nextInt();
-            TreeMap<Integer, Integer> map = new TreeMap<>();
+            LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
 
             while (n-- > 0) {
                 int x = scan.nextInt();
@@ -18,7 +18,9 @@ public class J02007 {
             }
 
             System.out.printf("Test %d:\n", i);
-            
+            for (Integer x : map.keySet()) {
+                System.out.printf("%d xuat hien %d lan\n", x, map.get(x));
+            }
         }
         scan.close();
     }
