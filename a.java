@@ -5,7 +5,7 @@ public class a {
         Scanner scan = new Scanner(System.in);
 
         int n = scan.nextInt();
-        int a[] = new int[201];
+        int a[][] = new int[201][201];
         int mx = 0;
         while (n-- > 0) {
             int x = scan.nextInt();
