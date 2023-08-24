@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class a {
+public class J03004 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
@@ -8,7 +8,6 @@ public class a {
         while (n-- > 0) {
             String name = scan.nextLine();
             String a[] = name.split(" ");
-            //System.out.println(Arrays.toString(a));
             for (String x : a) {
                 if (x.length() > 0) {
                     System.out.print(Character.toUpperCase(x.charAt(0)));
