@@ -1,21 +1,23 @@
-import java.util.*;
+import java.util.Scanner;
 
 public class a {
+    static char prime[] = {'2', '3', '5', '7'};
+    static String check(String s) {
+        int l = 0, r = s.length() - 1;
+            while (l <= r) {
+                if (s.charAt(l) != s.charAt(r)) 
+                    return "NO";
+                
+            }
+        return "YES";
+    }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         int n = Integer.parseInt(scan.nextLine());
         while (n-- > 0) {
-            String name = scan.nextLine();
-            String a[] = name.split(" ");
-            //System.out.println(Arrays.toString(a));
-            for (String x : a) {
-                if (x.length() > 0) {
-                    System.out.print(Character.toUpperCase(x.charAt(0)));
-                    System.out.print(x.substring(1).toLowerCase() + " ");
-                }
-            }
-            System.out.println();
+            String s = scan.next();
+            System.out.println(check(s));
         }
         
         scan.close();
