@@ -5,9 +5,12 @@ public class a {
     static String check(String s) {
         int l = 0, r = s.length() - 1;
             while (l <= r) {
-                if (s.charAt(l) != s.charAt(r)) 
-                    return "NO";
-                
+                if (s.charAt(l) == s.charAt(r)) {
+                    int val = s.charAt(l) - '0';
+                    if (val != 2 && val != 3 && val != 5 && val != 7) return "NO";
+                }
+                else return "NO";
+                l++; r--;
             }
         return "YES";
     }
