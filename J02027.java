@@ -3,12 +3,16 @@ import java.util.Scanner;
 
 public class J02027 {
     static int lower_bound(int a[], int l, int r, int val) {
-        while (l + 1 < r) {
+        int res = r + 1;
+        while (l <= r) {
             int m = (l + r) / 2;
-            if (a[m] >= val) r = m;
-            else l = m;
+            if (a[m] >= val) {
+                res = m;
+                r = m - 1;
+            }
+            else l = m + 1;
         }
-        return r;
+        return res;
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -21,11 +25,10 @@ public class J02027 {
             for (int i = 0; i < n; i++) a[i] = scan.nextInt();
 
             Arrays.sort(a);
-            int res = 0;
-            for (int i = 0; i < n - 1; i++) {
-                int j = lower_bound(a, i, n, a[i] + k);
-                j = j - i - 1;
-                if (j >= 1) res += j; 
+            long res = 0;
+            for (int i = 0; i < n; i++) {
+                int j = lower_bound(a, i + 1, n - 1, a[i] + k);
+                res += j - i - 1;
             }
             System.out.println(res);
         }
