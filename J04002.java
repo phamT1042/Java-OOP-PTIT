@@ -56,7 +56,7 @@ class Rectange {
         return (int)peri + " " + (int)area + " " + color_format;
     }
 }
-public class a {
+public class J04002 {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
