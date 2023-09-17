@@ -2,14 +2,14 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
-public class a {
+public class J07002 {
     public static void main(String[] args) throws IOException {
         Scanner sc = new Scanner(System.in);
 
-        FileReader f = new FileReader("D:/Document/Code/Java_OOP_PTIT/DATA.txt");
+        FileReader f = new FileReader("DATA.in");
         try (BufferedReader read = new BufferedReader(f)) {
             String s;
-            int sum = 0;
+            long sum = 0;
             while ((s = read.readLine()) != null) {
                 String tach[] = s.split(" ");
                 for (String x : tach) {
@@ -24,6 +24,7 @@ public class a {
             }
             System.out.println(sum);
         }
+        
         sc.close();
     }
 }
