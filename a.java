@@ -1,46 +1,61 @@
 import java.util.Scanner;
 
-class ThiSinh {
-    private String ma, ten, trangThai;
-    private double a, b, c, uuTien, tongDiem;
+class Matrix {
+    private int n, m;
+    private int a[][];
 
-    public ThiSinh(String ma, String ten, double a, double b, double c) {
-        this.ma = ma;
-        this.ten = ten;
-        this.a = a;
-        this.b = b;
-        this.c = c;
-        if (this.ma.charAt(2) == '1') this.uuTien = 0.5;
-        else if (this.ma.charAt(2) == '2') this.uuTien = 1.0;
-        else this.uuTien = 2.5;
-        this.tongDiem = 2 * this.a + this.b + this.c;
-        if (this.tongDiem + this.uuTien >= 24) this.trangThai = "TRUNG TUYEN";
-        else this.trangThai = "TRUOT";
+    public Matrix(int n, int m) {
+        this.n = n;
+        this.m = m;
+        this.a = new int[n][m];
     }
 
-    public String getUuTien() {
-        if (uuTien == 1) return "1";
-        return Double.toString(uuTien);
+    public void nextMatrix(Scanner sc) {
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) a[i][j] = sc.nextInt();
+        }
     }
 
-    public String getTongDiem() {
-        if (tongDiem % 1 == 0) return String.format("%.0f", tongDiem);
-        return String.format("%.1f", tongDiem);
+    public Matrix trans() {
+        Matrix b = new Matrix(this.m, this.n);
+        for (int i = 0; i < m; i++)
+            for (int j = 0; j < n; j++) b.a[i][j] = this.a[j][i];
+        return b;
+    }
+
+    public Matrix mul(Matrix other) {
+        Matrix res = new Matrix(this.n, other.m);
+        for (int i = 0; i < this.n; i++) {
+            for (int j = 0; j < other.m; j++) {
+                for (int k = 0; k < this.m; k++)
+                    res.a[i][j] += this.a[i][k] * other.a[k][j];
+            }
+        }
+        return res;
     }
 
     @Override
     public String toString() {
-        return ma + " " + ten + " " + getUuTien() + " " + getTongDiem() + " " + trangThai;
+        String res = "";
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) 
+                res += a[i][j] + " ";
+            res += "\n";
+        }
+        return res;
     }
-
 }
 
 public class a {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        System.out.println(new ThiSinh(sc.nextLine(), sc.nextLine(), Double.parseDouble(sc.nextLine()), Double.parseDouble(sc.nextLine()), Double.parseDouble(sc.nextLine())));
-
-        sc.close();
+        int t = sc.nextInt();
+        while(t-->0){
+             int n = sc.nextInt(), m = sc.nextInt();
+             Matrix a = new Matrix(n,m);
+             a.nextMatrix(sc);
+             Matrix b = a.trans();
+             System.out.println(a.mul(b));
+        }
     }
 }
