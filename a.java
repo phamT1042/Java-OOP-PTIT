@@ -1,61 +1,70 @@
 import java.util.Scanner;
 
-class Matrix {
-    private int n, m;
-    private int a[][];
-
-    public Matrix(int n, int m) {
-        this.n = n;
-        this.m = m;
-        this.a = new int[n][m];
+class Rectange {
+    private double width, height;
+    private String color;
+    
+    public Rectange(){
+        width = height = 1;
+        color = "";
+    }
+    public Rectange(double width, double height, String color) {
+        this.width = width;
+        this.height = height;
+        this.color = color;
     }
 
-    public void nextMatrix(Scanner sc) {
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) a[i][j] = sc.nextInt();
-        }
+    public double getWidth() {
+        return width;
+    }
+    public void setWidth(double width) {
+        this.width = width;
+    }
+    public double getHeight() {
+        return height;
+    }
+    public void setHeight(double height) {
+        this.height = height;
+    }
+    public String getColor() {
+        return color;
+    }
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public Matrix trans() {
-        Matrix b = new Matrix(this.m, this.n);
-        for (int i = 0; i < m; i++)
-            for (int j = 0; j < n; j++) b.a[i][j] = this.a[j][i];
-        return b;
+    public double findArea() {
+        return width * height;
     }
 
-    public Matrix mul(Matrix other) {
-        Matrix res = new Matrix(this.n, other.m);
-        for (int i = 0; i < this.n; i++) {
-            for (int j = 0; j < other.m; j++) {
-                for (int k = 0; k < this.m; k++)
-                    res.a[i][j] += this.a[i][k] * other.a[k][j];
-            }
-        }
-        return res;
+    public double findPerimeter() {
+        return (width + height) * 2;
     }
 
-    @Override
     public String toString() {
-        String res = "";
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < m; j++) 
-                res += a[i][j] + " ";
-            res += "\n";
+        double height = this.getHeight();
+        double width = this.getWidth();
+        if (height <= 0 || width <= 0) return "INVALID";
+        if (height % 1 != 0 || width % 1 != 0) return "INVALID";
+        String color_format = "";
+        color_format += Character.toUpperCase(this.getColor().charAt(0));
+        for (int i = 1; i < this.getColor().length(); i++) {
+            color_format += Character.toLowerCase(this.getColor().charAt(i));
         }
-        return res;
+        double area = this.findArea();
+        double peri = this.findPerimeter();
+        return (int)peri + " " + (int)area + " " + color_format;
     }
 }
-
 public class a {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int t = sc.nextInt();
-        while(t-->0){
-             int n = sc.nextInt(), m = sc.nextInt();
-             Matrix a = new Matrix(n,m);
-             a.nextMatrix(sc);
-             Matrix b = a.trans();
-             System.out.println(a.mul(b));
-        }
+        Scanner scan = new Scanner(System.in);
+
+        double w = scan.nextDouble();
+        double h = scan.nextDouble();
+        String c = scan.next();
+        System.out.println(new Rectange(w, h, c));
+
+        scan.close();
     }
 }
