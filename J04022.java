@@ -4,6 +4,10 @@ import java.util.TreeSet;
 class WordSet {
     private TreeSet<String> ds;
 
+    public WordSet() {
+        this.ds = new TreeSet<>();
+    }
+
     public WordSet(String s) {
         this.ds = new TreeSet<>();
         if (s != "") for (String x : s.split("\\s+")) this.ds.add(x.toLowerCase());
@@ -17,14 +21,14 @@ class WordSet {
     }
 
     public WordSet union(WordSet other) {
-        WordSet res = new WordSet("");
+        WordSet res = new WordSet();
         res.ds.addAll(this.ds);
         res.ds.addAll(other.ds);
         return res;
     }
     
     public WordSet intersection(WordSet other) {
-        WordSet res = new WordSet("");
+        WordSet res = new WordSet();
         res.ds.addAll(this.ds);
         res.ds.retainAll(other.ds);
         return res;
