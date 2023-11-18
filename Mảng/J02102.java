@@ -7,7 +7,7 @@ public class J02102 {
 
         int n = sc.nextInt();
         int save[] = new int[n * n];
-        for (int i = 0; i < n * n; i++) save[i] = sc.nextInt();
+        for (int i = 0; i < n * n; ++i) save[i] = sc.nextInt();
         Arrays.sort(save);
 
         int res[][] = new int[n + 1][n + 1];
