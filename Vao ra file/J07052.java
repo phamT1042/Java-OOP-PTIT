@@ -34,12 +34,13 @@ class ThiSinh implements Comparable<ThiSinh> {
 
     @Override
     public int compareTo(ThiSinh o) {
+        if (o.tongDiem == this.tongDiem) return this.maTS.compareTo(o.maTS);
         return o.tongDiem > this.tongDiem ? 1 : -1;
     }
 
     @Override
     public String toString() {
-        return maTS + " " + ten + " " + (uuTien == 1 ? "1" : uuTien) + " " + String.format("%.1f ", tongDiem);
+        return maTS + " " + ten + " " + (uuTien == 1 ? "1" : uuTien) + " " + (tongDiem == (int)tongDiem ? (int)tongDiem : String.format("%.1f ", tongDiem));
     }
 
     public float getTongDiem() {
@@ -49,7 +50,7 @@ class ThiSinh implements Comparable<ThiSinh> {
 
 public class J07052 {
     public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("Phong.txt"));
+        Scanner sc = new Scanner(new File("THISINH.in"));
         
         int n = Integer.parseInt(sc.nextLine());
         ThiSinh a[] = new ThiSinh[n];
@@ -62,7 +63,7 @@ public class J07052 {
 
         System.out.println(String.format("%.1f", diemChuan));
         for (int i = 0; i < n; ++i) 
-            System.out.println(a[i] + (a[i].getTongDiem() == diemChuan ? "TRUNG TUYEN" : "TRUOT"));
+            System.out.println(a[i] + " " + (a[i].getTongDiem() >= diemChuan ? "TRUNG TUYEN" : "TRUOT"));
         
         sc.close();
     }
