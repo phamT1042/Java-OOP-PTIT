@@ -37,7 +37,7 @@ class ThiSinh implements Comparable<ThiSinh> {
 }
 
 public class J05059 {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
         int n = Integer.parseInt(sc.nextLine());
