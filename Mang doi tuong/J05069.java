@@ -10,17 +10,11 @@ class CLB {
         this.giaVe = giaVe;
     }
 
-    public String getMaCLB() {
-        return this.maCLB;
-    }
+    public String getMaCLB() {return this.maCLB;}
 
-    public String getTenClb() {
-        return this.tenCLB;
-    }
+    public String getTenClb() {return this.tenCLB;}
 
-    public long getGiaVe() {
-        return this.giaVe;
-    }
+    public long getGiaVe() {return this.giaVe;}
 }
 
 class TranDau {
