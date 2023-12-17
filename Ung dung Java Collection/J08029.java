@@ -24,11 +24,11 @@ public class J08029 {
     private static int solve (int s1, int s2, int e1, int e2) {
         LinkedList<Pair> q = new LinkedList<>();
         int vs[][] = new int[9][9];
-        q.add(new Pair(s1, s2));
+        q.push(new Pair(s1, s2));
         vs[s1][s2] = -1;
 
         while (true) {
-            Pair tmp = q.pollFirst();
+            Pair tmp = q.removeLast();
             int i = tmp.getX(), j = tmp.getY();
             if (i == e1 && j == e2) return vs[i][j] + 1;
 
@@ -38,7 +38,7 @@ public class J08029 {
                 if (i1 >= 1 && i1 <= 8 && j1 >= 1 && j1 <= 8) 
                     if (vs[i1][j1] == 0) {
                         vs[i1][j1] = vs[i][j] + 1;
-                        q.add(new Pair(i1, j1));
+                        q.push(new Pair(i1, j1));
                     }
             }
         }

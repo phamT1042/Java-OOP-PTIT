@@ -5,19 +5,13 @@ public class J03021 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        HashMap<String, Integer> block = new HashMap<>();
-        block.put("ABC", 2);
-        block.put("DEF", 3);
-        block.put("GHI", 4);
-        block.put("JKL", 5);
-        block.put("MNO", 6);
-        block.put("PQRS", 7);
-        block.put("TUV", 8);
-        block.put("WXYZ", 9);
         HashMap<Character, Integer> chr = new HashMap<>();
-        for (String x : block.keySet()) 
-            for (int i = 0; i < x.length(); ++i) 
-                chr.put(x.charAt(i), block.get(x));
+        int val = 2;
+        for (int i = 0; i < 26; ++i) {
+            char x = (char) (i + 'A');
+            if (i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 19 || i == 22) val++;
+            chr.put(x, val);
+        }
  
         int t = sc.nextInt();
         while (t-- > 0) {

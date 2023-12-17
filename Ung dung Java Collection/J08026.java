@@ -24,22 +24,22 @@ public class J08026 {
         LinkedList<Pair> progress = new LinkedList<>();
         HashSet<Integer> save = new HashSet<>();
         save.add(s);
-        progress.add(new Pair(s, 0));
+        progress.push(new Pair(s, 0));
 
         while (true) {
-            Pair val = progress.pollFirst();
+            Pair val = progress.removeLast();
             int value = val.getX();
             int step = val.getY();
             if (value == t) return step;
 
             if (!save.contains(value * 2) && value < t) {
                 save.add(value * 2);
-                progress.add(new Pair(value * 2, step + 1));
+                progress.push(new Pair(value * 2, step + 1));
             }
 
             if (!save.contains(value - 1) && value - 1 > 0) {
                 save.add(value - 1);
-                progress.add(new Pair(value - 1, step + 1));
+                progress.push(new Pair(value - 1, step + 1));
             }
         }
     }

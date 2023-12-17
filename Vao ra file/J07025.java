@@ -12,16 +12,12 @@ class KhachHang implements Comparable<KhachHang> {
     private Date ngaySinh;
     private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
-    public KhachHang(int ma, String tenKH, String gioiTinh, String ngaySinh, String diaChi) {
+    public KhachHang(int ma, String tenKH, String gioiTinh, String ngaySinh, String diaChi) throws ParseException {
         this.maKH = String.format("KH%03d", ma);
         this.tenKH = chuanHoaTen(tenKH);
         this.gioiTinh = gioiTinh;
         this.diaChi = diaChi;
-        try {
-            this.ngaySinh = sdf.parse(ngaySinh);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        this.ngaySinh = sdf.parse(ngaySinh);
     }
 
     private String chuanHoaTen(String s) {
@@ -45,8 +41,8 @@ class KhachHang implements Comparable<KhachHang> {
 }
 
 public class J07025 {
-    public static void main(String[] args) throws FileNotFoundException {
-        Scanner sc = new Scanner(new File("DATA.txt"));
+    public static void main(String[] args) throws FileNotFoundException, ParseException {
+        Scanner sc = new Scanner(new File("KHACHHANG.in"));
 
         int n = Integer.parseInt(sc.nextLine());
         KhachHang listKH[] = new KhachHang[n];

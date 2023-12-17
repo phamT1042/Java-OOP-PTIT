@@ -4,10 +4,13 @@ public class J08012 {
     static String check(int ke[], int n) {
         int cnt = 0;
         for (int i = 1; i <= n; i++) {
-            if (ke[i] == n - 1) cnt++;
-            else if (ke[i] < n - 1 && ke[i] > 1) return "No";
+            if (ke[i] == n - 1) {
+                if (cnt == 1) return "No";
+                cnt++;
+            }
+            else if (ke[i] != 1) return "No";
         }
-        return (cnt == 1) ? "Yes" : "No";
+        return "Yes";
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);

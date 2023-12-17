@@ -18,19 +18,24 @@ public class J02033 {
         } 
 
         n = negative.size(); 
-        Long res = 0l;
-
         Collections.sort(negative);
-        int i = 0;
-        while (i < n && k > 0) {
-            positive.add(-negative.get(i++));
+        Long res = 0l;
+        int i;
+        for (i = 0; i < n; ++i) {
+            if (k == 0) break;
+            negative.set(i, -negative.get(i));
+            res += negative.get(i);
             k--;
         }
-
-        Collections.sort(positive);
-        if (k % 2 == 1 && check0 == 0) positive.set(0, -positive.get(0));
         while (i < n) res += negative.get(i++);
+
         for (int y : positive) res += y;
+        if (check0 == 0 && k % 2 == 1) {
+            int delete = 100001;
+            if (!negative.isEmpty()) delete = Math.min(delete, Collections.min(negative));
+            if (!positive.isEmpty()) delete = Math.min(delete, Collections.min(positive));
+            res -= delete * 2;
+        }
 
         System.out.println(res);
         sc.close();

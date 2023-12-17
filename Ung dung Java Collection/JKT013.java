@@ -9,15 +9,15 @@ public class JKT013 {
         ArrayList<String> save[] = new ArrayList[15];
         for (int i = 0; i < 15; ++i) save[i] = new ArrayList<String>();
         LinkedList<String> q = new LinkedList<>();
-        q.add("6");
-        q.add("8");
+        q.push("6");
+        q.push("8");
         while (!q.isEmpty()) {
-            String s = q.pollFirst();
+            String s = q.removeLast();
             save[s.length()].add(s);
 
             if (s.length() < 14) {
-                q.add(s + "6");
                 q.add(s + "8");
+                q.add(s + "6");
             }
         }
 

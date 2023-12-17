@@ -1,8 +1,9 @@
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class J02024 {
-    static int a[] = new int[16];
+    static Integer a[] = new Integer[16];
     static int bit[] = new int[16];
     static int n;
 
@@ -33,14 +34,7 @@ public class J02024 {
         while (t-- > 0) {
             n = sc.nextInt();
             for (int i = 0; i < n; i++) a[i] = sc.nextInt();
-            Arrays.sort(a, 0, n);
-            int l = 0, r = n - 1;
-            while (l < r) {
-                int tmp = a[r];
-                a[r] = a[l];
-                a[l] = tmp;
-                l++; r--;
-            }
+            Arrays.sort(a, 0, n, Collections.reverseOrder());
             Try(0);
         }
 
